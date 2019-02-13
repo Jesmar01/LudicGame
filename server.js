@@ -27,48 +27,78 @@ app.get("/", (req, res)=> {
 });
 
 //modulos externos
-var juegos = require("./lib/Juegos");
-var P_mentales = require("./lib/P_mentales");
+var user = require("./lib/User");
+var juego = require("./lib/Juego");
+var cognitivo = require("./lib/P_cognitivo");
+var mental = require("./lib/P_mental");
+
+
 
 //GET TODOS
-app.get("/juegos", (req, res) => {
-  juegos.getJuegos(req, res);
+app.get("/users", (req, res) => {
+  user.getUsers(req, res);
 });
-app.get("/P_mentales", (req, res) => {
-  P_mentales.getP_mentales(req, res);
+app.get("/juegos", (req, res) => {
+  juego.getJuegos(req, res);
+});
+app.get("/cognitivos", (req, res) => {
+  cognitivo.getP_cognitivos(req, res);
+});
+app.get("/mentales", (req, res) => {
+  mental.getP_mentales(req, res);
 });
 
 //GET POR ID
+app.get("/users/:id", (req, res) => {
+  user.getUser(req, res);
+});
 app.get("/juegos/:id", (req, res) => {
-  juegos.getJuegos(req, res);
+  juego.getJuego(req, res);
 });
-app.get("/P_mentales/:id", (req, res) => {
-  P_mentales.getP_mentales(req, res);
+app.get("/cognitivos/:id", (req, res) => {
+  cognitivo.getP_cognitivo(req, res);
 });
-
+app.get("/mentales/:id", (req, res) => {
+  mental.getP_mental(req, res);
+});
 //POST
+app.post("/users", (req, res) => {
+  user.newUser(req, res);
+});
 app.post("/juegos", (req, res) => {
-  juegos.newJuegos(req, res);
+  juego.newJuego(req, res);
 });
-app.post("/P_mentales", (req, res) => {
-  P_mentales.newP_mentales(req, res);
+app.post("/cognitivos", (req, res) => {
+  cognitivo.newP_cognitivo(req, res);
 });
-
+app.post("/mentales", (req, res) => {
+  mental.newP_mental(req, res);
+});
 //PUT
+app.put("/users/:id", (req, res) => {
+  user.updateUser(req, res);
+});
 app.put("/juegos/:id", (req, res) => {
-  juegos.updateJuegos(req, res);
+  juego.updateJuego(req, res);
 });
-
-app.put("/P_mentales/:id", (req, res) => {
-  P_mentales.updateP_mentales(req, res);
+app.put("/cognitivos/:id", (req, res) => {
+  cognitivo.updateP_cognitivo(req, res);
 });
-
+app.put("/mentales/:id", (req, res) => {
+  mental.updateP_mental(req, res);
+});
 //DELETE
-app.delete("/juegos/:id", (req, res) => {
-  juegos.deleteJuegos(req, res);
+app.delete("/users/:id", (req, res) => {
+  user.deleteUser(req, res);
 });
-app.delete("/P_mentales/:id", (req, res) => {
-  P_mentales.deleteP_mentales(req, res);
+app.delete("/juegos/:id", (req, res) => {
+  juego.deleteJuego(req, res);
+});
+app.delete("/cognitivos/:id", (req, res) => {
+  cognitivo.deleteP_cognitivo(req, res);
+});
+app.delete("/mentales/:id", (req, res) => {
+  mental.deleteP_mental(req, res);
 });
 
 app.listen(8081);
